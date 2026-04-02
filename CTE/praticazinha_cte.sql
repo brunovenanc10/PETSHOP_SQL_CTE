@@ -1,4 +1,4 @@
-
+-- Quais produtos custam mais que o preço médio de todos os produtos? 
 WITH MediaProdutos AS (
     SELECT AVG(preco) AS media
     FROM produtos
@@ -12,6 +12,7 @@ FROM produtos p, MediaProdutos m
 WHERE p.preco > m.media
 ORDER BY p.preco DESC;
 
+-- Quais clientes TÊM pets E já fizeram pelo menos uma compra?
 
 WITH ClientesComPets AS (
     SELECT DISTINCT clientes.id, clientes.nome
@@ -34,6 +35,8 @@ SELECT
 FROM ClientesComPets cp
 INNER JOIN ClientesComCompras cc ON cp.id = cc.id
 ORDER BY cc.total_compras DESC;
+
+--Quais clientes gastaram MAIS que a média de gastos por cliente?
 
 WITH GastosPorCliente AS (
     SELECT 
